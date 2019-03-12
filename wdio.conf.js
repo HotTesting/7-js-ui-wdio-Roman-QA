@@ -2,7 +2,7 @@ exports.config = {
   hostname: "localhost",
   port: 4444,
   path: "/wd/hub",
-  specs: ["./tests/*.ts"],
+  specs: ["./tests/test2.ts"], 
   sync: true,
   services: ["selenium-standalone"],
   capabilities: [
@@ -17,7 +17,7 @@ exports.config = {
     timeout: 120000
   },
   reporters: ['spec'],
-  before: function(capabilities, specs) {
+  before: function (capabilities, specs) {
     process.env.TS_NODE_FILES = true;
     require("ts-node").register();
   }

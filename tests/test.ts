@@ -4,8 +4,6 @@ import * as faker from "faker";
 describe('WDIO', function () {
     it('Should be alive', function () {
         browser.url('/')
-        //let body = $('body')
-        //  console.log(body.getText())
 
     })
 })
@@ -17,8 +15,8 @@ describe("Items search", function () {
         $('input[type="search"]').addValue('Enter');
         browser.pause(1000)
 
-        expect($('main [class="col-xs-6 col-sm-4 col-md-3"]').isDisplayed()).to.equal(true);
-        // throw new Error("NOT IMPLEMENTED");
+        expect($('#box-search-results [class="col-xs-6 col-sm-4 col-md-3"]').isDisplayed()).to.equal(true);
+
     });
 
     it("should redirect to item page in case only one result matches", function () {
@@ -31,7 +29,6 @@ describe("Items search", function () {
         console.log(text)
         expect(text).to.equal('Purple Duck');
 
-        // throw new Error("NOT IMPLEMENTED");
     });
 
     it("should redirect to 'no matching results' in case no items matched", function () {
@@ -45,7 +42,6 @@ describe("Items search", function () {
         console.log(text)
         expect(text).to.equal('No matching results');
 
-        // throw new Error("NOT IMPLEMENTED");
     });
 });
 
@@ -59,10 +55,32 @@ describe("Search results sorting", function () {
         browser.pause(2000)
         $('[class="btn btn-default"][href*="sort=price"]').click();
         browser.pause(2000)
+        // const a = $$('[class="price-wrapper"]');
+        // for(let i=0;i<a.length - 1;i++){
+        //     let first_price = 0;
+        //     if(a[i].getElementsByClassName("price")){
+        //         first_price = a[i].getElementsByClassName("price")[0].innerText
+        //     } else {
+        //         first_price = a[i].getElementsByClassName("campaign-price")[0].innerText
+        //     }
 
+        //     let second_price = 0;
+        //     if(a[i+1].getElementsByClassName("price")){
+        //         second_price = a[i+1].getElementsByClassName("price")[0].innerText
+        //     } else {
+        //         second_price = a[i+1].getElementsByClassName("campaign-price")[0].innerText
+        //     }
+
+        //     expect(first_price < second_price);
+        // }
+        // a.forEach(function (value) {
+        //     console.log('###################');
+        //     console.log(value.getText());
 
         // throw new Error("NOT IMPLEMENTED");
     });
+
+
 
     it("correctly arranges items when using 'by name' sorting", function () {
 
@@ -72,10 +90,10 @@ describe("Search results sorting", function () {
         browser.pause(2000)
         $('[class="btn btn-default"][href*="sort=name"]').click();
         browser.pause(2000)
-        // throw new Error("NOT IMPLEMENTED");
-    });
-});
 
+    });
+
+});
 describe("Contact us form", function () {
     it("must send messages to shop administration", function () {
 
@@ -106,8 +124,7 @@ describe("Contact us form", function () {
         expect($('.alert.alert-success').isDisplayed()).to.equal(true);
         const text = $('.alert.alert-success').getText();
         expect(text).to.contain('×\nYour email has successfully been sent');
-        console.log(text);
+        // console.log(text);
 
-        // throw new Error("NOT IMPLEMENTED");
     });
-});
+})
